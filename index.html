@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>유전자</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- 마우스 포인터 요소 -->
+    <div id="mouse-pointer"></div>
+
+    <header>
+        <div class="menuContainer">
+            <div class="logo">
+                <h1>CRISPR-CAS9</h1>
+            </div>
+            <nav class="main-navigation">
+                <a href="#background">배경</a>
+                <a href="#principle">원리</a>
+                <a href="#effect">효과</a>
+                <a href="#issues">문제</a>
+                <a href="#solution">대책</a>
+            </nav>
+        </div>
+    </header>
+    <main class="hero-bg">
+        <div class="video-wrap">
+            <img src="assets/sample-poster.png" alt="Sample Poster">
+            <video src="assets/gene3.mp4" muted autoplay loop poster="assets/sample-poster.png"></video>
+        </div>
+        <div class="container">
+            <div class="text-wrap">
+                <div class="gene-editing">
+                    <span class="gene">유전자</span>
+                    <span class="editing-technology">편집기술</span>
+                </div>
+                <h3>CRISPR-Cas9은 특정 유전자를 정밀하게 편집할 수 있는 혁신적인 기술로, 
+                    질병 치료와 농업 분야에서 큰 잠재력을 가지고 있습니다. </h3>
+                <p>이 기술을 통해 유전병 치료, 암 연구, 유전자 결함 수정 등이 가능해지면서 많은 기대를 받고 있습니다.<br>하지만 동시에 여러 윤리적 문제를 제기하고 있습니다.</p>
+                <div class="btn-wrap">
+                    <a class="btn" href="#crispr-cas9">바로가기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 아래에 다른 섹션들 추가 -->
+
+    <section id="background" class="section">
+        <div class="container">
+            <h2>CRISPR-CAS9</h2>
+            <div class="content">
+                <img src="assets/chart.png" alt="CRISPR Chart" class="chart">
+                <div class="text">
+                    <p class="chart-caption">Growth of CRISPR Publications and Clinical Trials (2011-2020)</p>
+                    <p>유전자 편집기술은 다른 말로 ‘유전자 가위’라고도 말하는데, 우리가 가위로 정확하게 색종이를 잘라내듯이 원하는 위치의 유전자를 아주 정확하게 잘라낼 수 있고, 또한 다른 유전자를 가위로 잘라서 정확하게 붙일 수 있는 편집 기술이다.</p>
+                    <p>“글로벌 크리스퍼시장 현황과 전망”이란 보고서에 따르면 2014년 약 2억 달러에 불과 했으나 그 후 6년(2016-2022년)간 연평균 성장률 36.2%로 빠르게 성장하여 2022년에는 약 23억 달러의 시장이 형성되어 2014년에 비해 10배 이상 성장할 것으로 보인다. 우리나라의 크리스퍼 시장도 2014년 600만 달러에서 2020년에는 7,000만 달러로 커질 것으로 전망하고 있다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 기타 섹션들 추가 -->
+
+    <button class="top-button" onclick="scrollToTop()">Top</button>
+
+    <!-- jQuery 불러오기 -->
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var $mousePointer = $('#mouse-pointer'),
+                $clickElements = $('a, button, input');
+
+            // 업데이트 커서 포지션
+            function moveCursor(e) {
+                $mousePointer.css({
+                    "left": e.pageX,
+                    "top": e.pageY
+                });
+            }
+
+            // 호버 이펙트
+            $clickElements.mouseenter(function () {
+                $mousePointer.addClass('hover');
+            });
+
+            $clickElements.mouseleave(function () {
+                $mousePointer.removeClass('hover');
+            });
+
+            // 움직임에 따른 마우스 포지션 업데이트
+            $(window).on('mousemove', moveCursor);
+
+            // 네비게이션 클릭시 스크롤 이동
+            $('.main-navigation a').on('click', function(e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 500);
+            });
+        });
+
+        function scrollToTop() {
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        }
+
+        // '유전자', '편집기술' 텍스트 애니메이션
+        $(document).ready(function () {
+            $('.gene').animate({left: '-=400px'}, 300);
+            $('.editing-technology').animate({right: '-=400px'}, 300);
+        });
+    </script>
+
+</body>
+
+</html>
